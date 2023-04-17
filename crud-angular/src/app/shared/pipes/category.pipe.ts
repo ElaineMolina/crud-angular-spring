@@ -1,0 +1,17 @@
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'category'
+})
+export class CategoryPipe implements PipeTransform {
+
+  transform(value: string): string {
+    switch(value){
+      case 'front-end': return 'code';
+      case 'back-end': return 'laptop';
+
+    }
+    return 'keyboard_double_arrow_up';
+  }
+
+}
