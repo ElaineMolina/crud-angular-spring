@@ -10,7 +10,7 @@ import { Course } from '../model/courses/model/course';
 })
 export class CoursersService {
 
-  private readonly API = '/assets/courses.json';
+  private readonly API = 'api/courses';
   constructor(
     private httpClient: HttpClient
   ) { }
@@ -20,8 +20,12 @@ export class CoursersService {
     .pipe(
       // take(1), //finaliza a inscrição
       first(), //quero a primeira resposta queo servidor me enviar e finaliza a inscrição
-      delay(1000),
+      // delay(1000),
       tap( courses => console.log(courses))
     );
+  }
+
+  save(record: Course){
+    return this.httpClient.post<Course>(this.API, record).pipe(first());
   }
 }
