@@ -8,9 +8,9 @@ import { Course } from '../model/courses/model/course';
 @Injectable({
   providedIn: 'root'
 })
-export class CoursersService {
+export class CoursesService {
 
-  private readonly API = 'api/courses';
+  private readonly API = 'http://localhost:8080/api/courses';
   constructor(
     private httpClient: HttpClient
   ) { }
@@ -25,7 +25,11 @@ export class CoursersService {
     );
   }
 
-  save(record: Course){
+  loadById(id: string){
+    return this.httpClient.get<Course>(`${this.API}/${id}`);
+  }
+
+  save(record: Partial<Course>){
     return this.httpClient.post<Course>(this.API, record).pipe(first());
   }
 }
