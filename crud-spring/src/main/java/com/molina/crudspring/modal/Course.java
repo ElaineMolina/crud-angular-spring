@@ -1,6 +1,10 @@
 package com.molina.crudspring.modal;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.molina.crudspring.enums.Category;
+import com.molina.crudspring.enums.Status;
+import com.molina.crudspring.enums.converter.CategoryConverter;
+import com.molina.crudspring.enums.converter.StatusConverter;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -28,14 +32,12 @@ public class Course {
     private String name;
 
     @NotNull
-    @Length(max = 100)
-    @Pattern(regexp = "Back-end|Front-end")
-    @Column(length = 20, nullable = false)
-    private String category;
+    @Column(length = 10, nullable = false)
+    @Convert(converter = CategoryConverter.class)
+    private Category category;
 
     @NotNull
-    @Length(max = 10)
-    @Pattern(regexp = "Ativo|Inativo")
     @Column(length = 10, nullable = false)
-    private String status = "Ativo";
+    @Convert(converter = StatusConverter.class)
+    private Status status = Status.ACTIVE;
 }

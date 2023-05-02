@@ -1,7 +1,6 @@
 package com.molina.crudspring.controller;
 
 import com.molina.crudspring.dto.CourseDTO;
-import com.molina.crudspring.modal.Course;
 import com.molina.crudspring.service.CourseService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -23,7 +22,7 @@ public class CourseController {
     }
 
     @GetMapping
-    public @ResponseBody List<CourseDTO> list(){
+    public List<CourseDTO> list(){
         return courseService.list();
     }
 
