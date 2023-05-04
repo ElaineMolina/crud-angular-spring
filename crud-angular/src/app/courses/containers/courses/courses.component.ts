@@ -3,15 +3,9 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { catchError, Observable, of } from 'rxjs';
-
-import {
-    ConfirmationDialogComponent
-} from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
-import {
-    ErrorDialogComponent
-} from 'src/app/shared/components/error-dialog/error-dialog.component';
+import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
+import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 
 import { Course } from '../../model/courses/model/course';
 import { CoursesService } from '../../services/courses.service';
@@ -62,6 +56,7 @@ export class CoursesComponent {
   }
 
   onRemove(course: Course) {
+    console.log('chegou no pai', course);
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       data: 'Tem certeza que deseja remover esse curso?',
     });

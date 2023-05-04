@@ -19,6 +19,9 @@ export class CoursesListComponent {
 
   ) { }
 
+  ngOnInit(){
+    console.log(this.courses);
+  }
   onAdd(){
     this.add.emit(true);
   }
@@ -27,7 +30,8 @@ export class CoursesListComponent {
     this.edit.emit(course);
   }
 
-  onDelete(course: Course){
+  onRemove(course: Course){
     this.remove.emit(course);
+
   }
 }

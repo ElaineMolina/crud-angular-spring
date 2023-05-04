@@ -15,6 +15,7 @@ export class ConfirmationDialogComponent implements OnInit{
 
 
   ngOnInit(): void {
+    console.log('este é modal');
   }
 
   onConfirm(result: boolean): void {
